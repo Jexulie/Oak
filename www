@@ -1,0 +1,44 @@
+var config = require('../config/config.json');
+var logger = require('../config/logger.js');
+
+var serverLogger = logger.start();
+
+var app = require('../app');
+var http = require('http');
+
+var port = normalizePort(process.env.PORT || config.server.port);
+
+var server = http.createServer(app);
+server.listen(port);
+server.on('error', handleError);
+server.on('listening', handleListen);
+
+function normalizePort(val){
+	var port = parseInt(val, 10);
+	if(isNaN(port)) return val;
+	if(port >= 0) return port;
+	return false;
+}
+
+function handleError(error){
+	if(error.syscall !== 'listen') throw error;
+	var bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
+	switch(error.code){
+		case 'EACCES':
+			serverLogger.error(bind + ' requires elevated privileges', 'Server');
+			process.exit(1);
+			break;
+		case 'EADDRINUSE':
+			serverLogger.error(bind + ' is already in use', 'Server');
+			process.exit(1);
+			break;
+		default:
+			throw error;
+	}
+}
+
+function handleListen(){
+	var addr = server.address();
+	var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
+	serverLogger.info('Listening on ' + bind, 'Server');
+}
