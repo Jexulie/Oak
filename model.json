@@ -1,0 +1,54 @@
+{
+    "appname": "my-api",
+    "models": [{
+            "name": "books",
+            "methods": ["get", "post", "patch", "put", "delete"],
+            "schema": [{
+                    "name": "name",
+                    "type": "String",
+                    "required": true
+                },
+                {
+                    "name": "author",
+                    "type": "String",
+                    "required": true
+                },
+                {
+                    "name": "page",
+                    "type": "Number",
+                    "required": true
+                },
+                {
+                    "name": "createdDate",
+                    "type": "Date",
+                    "default": "Date.now()"
+                }
+            ]
+        },
+        {
+            "name": "movies",
+            "methods": ["get", "post", "patch", "put", "delete"],
+            "schema": [{
+                    "name": "name",
+                    "type": "String",
+                    "required": true
+                },
+                {
+                    "name": "genre",
+                    "type": "Array",
+                    "required": true
+                },
+                {
+                    "name": "rating",
+                    "type": "Number",
+                    "required": true
+                },
+                {
+                    "name": "createdDate",
+                    "type": "Date",
+                    "default": "Date.now()"
+                }
+            ]
+        }
+    ]
+}
