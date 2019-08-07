@@ -4,7 +4,7 @@
 
 ### Installing:
 ```bash
-    npm install -g oak
+    npm install -g oak-crud
 ```
 
 ### Usage:

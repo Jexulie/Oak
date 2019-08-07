@@ -1,5 +1,5 @@
 {
-  "name": "oak",
+  "name": "oak-crud",
   "version": "1.0.0",
   "description": "CRUD API Generator",
   "main": "app.js",
